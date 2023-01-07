@@ -1,0 +1,14 @@
+
+main {
+    padding: 50px;
+}
+
+table {
+    width: 700px;
+    margin: 50px auto;
+}
+
+table, td, th {
+    border: 2px solid black;
+    padding: 10px;
+}
