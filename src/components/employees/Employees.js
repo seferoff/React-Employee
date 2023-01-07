@@ -4,7 +4,10 @@ import "./Employees.css";
 const Employees = () => {
   const [user, setUser] = useState([]);
   const [employee, setEmployee] = useState([]);
-  const [value, setValue] = useState("");
+  const [valueId, setValueId] = useState("");
+  const [valueName, setValueName] = useState("");
+  const [valueDepartment, setValueDepartment] = useState("");
+  const [valueRole, setValueRole] = useState("");
 
   const fetchData = async () => {
     const response = await fetch(
@@ -12,23 +15,65 @@ const Employees = () => {
     );
     const data = await response.json();
     setUser(data);
-    setEmployee(data)
+    setEmployee(data);
   };
 
   useEffect(() => {
     fetchData();
   }, []);
 
-  const handleChange = (e) => {
-    setValue(e.target.value);
-    console.log(user);
-    const clone = employee.filter((item) => {
-      if (e.target.value !== "") {
+  const handleChangeId = (e) => {
+    setValueId(e.target.value);
+    if (e.target.value !== "") {
+      const clone = user.filter((item) => {
         return +item.id === +e.target.value;
-      }
+      });
       setEmployee(clone);
-    });
+    }
+    if (e.target.value === "") {
+      setEmployee(user);
+    }
   };
+
+  const handleChangeName = (e) => {
+    setValueName(e.target.value);
+    if (e.target.value !== "") {
+      const clone = user.filter((item) => {
+        return item.name.includes(e.target.value);
+      });
+      setEmployee(clone);
+    }
+    if (e.target.value === "") {
+      setEmployee(user);
+    }
+  };
+
+  const handleChangeDepartment = (e) => {
+    setValueDepartment(e.target.value);
+    if (e.target.value !== "") {
+      const clone = user.filter((item) => {
+        return item.department.includes(e.target.value);
+      });
+      setEmployee(clone);
+    }
+    if (e.target.value === "") {
+      setEmployee(user);
+    }
+  };
+
+  const handleChangeRole = (e) => {
+    setValueRole(e.target.value);
+    if (e.target.value !== "") {
+      const clone = user.filter((item) => {
+        return item.role.includes(e.target.value);
+      });
+      setEmployee(clone);
+    }
+    if (e.target.value === "") {
+      setEmployee(user);
+    }
+  };
+
 
   return (
     <main>
@@ -41,21 +86,36 @@ const Employees = () => {
               <input
                 type="number"
                 placeholder="Search"
-                value={value}
-                onChange={(e) => handleChange(e)}
+                value={valueId}
+                onChange={(e) => handleChangeId(e)}
               />
             </th>
             <th>
               Name<br></br>
-              <input type="text" placeholder="Search" />
+              <input
+                type="text"
+                placeholder="Search"
+                value={valueName}
+                onChange={(e) => handleChangeName(e)}
+              />
             </th>
             <th>
               Department<br></br>
-              <input type="text" placeholder="Search" />
+              <input
+                type="text"
+                placeholder="Search"
+                value={valueDepartment}
+                onChange={(e) => handleChangeDepartment(e)}
+              />
             </th>
             <th>
               Role<br></br>
-              <input type="text" placeholder="Search" />
+              <input
+                type="text"
+                placeholder="Search"
+                value={valueRole}
+                onChange={(e) => handleChangeRole(e)}
+              />
             </th>
           </tr>
         </thead>
