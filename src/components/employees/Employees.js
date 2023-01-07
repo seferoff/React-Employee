@@ -39,7 +39,7 @@ const Employees = () => {
     setValueName(e.target.value);
     if (e.target.value !== "") {
       const clone = user.filter((item) => {
-        return item.name.includes(e.target.value);
+        return item.name.toLowerCase().includes(e.target.value.toLowerCase());
       });
       setEmployee(clone);
     }
@@ -52,7 +52,7 @@ const Employees = () => {
     setValueDepartment(e.target.value);
     if (e.target.value !== "") {
       const clone = user.filter((item) => {
-        return item.department.includes(e.target.value);
+        return item.department.toLowerCase().includes(e.target.value.toLowerCase());
       });
       setEmployee(clone);
     }
@@ -65,7 +65,7 @@ const Employees = () => {
     setValueRole(e.target.value);
     if (e.target.value !== "") {
       const clone = user.filter((item) => {
-        return item.role.includes(e.target.value);
+        return item.role.toLowerCase().includes(e.target.value.toLowerCase());
       });
       setEmployee(clone);
     }
