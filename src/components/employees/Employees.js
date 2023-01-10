@@ -74,6 +74,13 @@ const Employees = () => {
     }
   };
 
+  const handleClick = () => {
+    setValueId("")
+    setValueName("")
+    setValueDepartment("")
+    setValueRole("")
+  }
+
 
   return (
     <main>
@@ -88,6 +95,7 @@ const Employees = () => {
                 placeholder="Search"
                 value={valueId}
                 onChange={(e) => handleChangeId(e)}
+                onClick={() => handleClick()}
               />
             </th>
             <th>
@@ -97,6 +105,7 @@ const Employees = () => {
                 placeholder="Search"
                 value={valueName}
                 onChange={(e) => handleChangeName(e)}
+                onClick={() => handleClick()}
               />
             </th>
             <th>
@@ -106,6 +115,7 @@ const Employees = () => {
                 placeholder="Search"
                 value={valueDepartment}
                 onChange={(e) => handleChangeDepartment(e)}
+                onClick={() => handleClick()}
               />
             </th>
             <th>
@@ -115,6 +125,7 @@ const Employees = () => {
                 placeholder="Search"
                 value={valueRole}
                 onChange={(e) => handleChangeRole(e)}
+                onClick={() => handleClick()}
               />
             </th>
           </tr>
